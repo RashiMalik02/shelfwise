@@ -33,3 +33,7 @@ def test_metrics_exposes_http_and_inventory_metrics(client, make_product):
     assert "http_request_duration_seconds_bucket" in text
     assert "shelfwise_products 1.0" in text
     assert 'shelfwise_stock_movements_total{reason="RECEIVED"}' in text
+
+
+def test_api_info_reports_environment(client):
+    assert client.get("/api/info").json()["environment"] == "test"

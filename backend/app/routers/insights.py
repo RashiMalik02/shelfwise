@@ -2,12 +2,19 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session, selectinload
 
+from ..config import settings
 from ..database import get_db
 from ..models import Product, StockMovement
 from ..schemas import CategorySummary, InventoryStats, MovementOut
 from .products import movement_out
 
 router = APIRouter(prefix="/api", tags=["insights"])
+
+
+@router.get("/info")
+def service_info():
+    """Small identity payload the dashboard shows in its header (routed through /api by the ingress)."""
+    return {"service": settings.app_name, "version": settings.app_version, "environment": settings.environment}
 
 
 @router.get("/stats", response_model=InventoryStats)
