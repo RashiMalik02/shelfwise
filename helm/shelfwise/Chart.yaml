@@ -1,0 +1,9 @@
+apiVersion: v2
+name: shelfwise
+description: Shelfwise inventory manager - React frontend, FastAPI backend and PostgreSQL
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords: [inventory, fastapi, react, postgres]
+maintainers:
+  - name: RashiMalik02

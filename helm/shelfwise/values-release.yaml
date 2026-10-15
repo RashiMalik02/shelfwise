@@ -1,0 +1,10 @@
+# Written by the promote-gitops job in .github/workflows/ci-cd.yml - do not edit by hand.
+# Argo CD watches this file; a new commit here is what rolls the local cluster forward.
+backend:
+  image:
+    repository: ghcr.io/rashimalik02/shelfwise-backend
+    tag: ""
+frontend:
+  image:
+    repository: ghcr.io/rashimalik02/shelfwise-frontend
+    tag: ""

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shelfwise
+  labels:
+    app.kubernetes.io/part-of: shelfwise
+    # Reject pods that run as root, mount host paths, etc.
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted

@@ -1,0 +1,16 @@
+Shelfwise {{ .Chart.AppVersion }} is deployed to namespace "{{ .Release.Namespace }}".
+
+  backend image : {{ include "shelfwise.image" (list .Values.backend.image .) }}
+  frontend image: {{ include "shelfwise.image" (list .Values.frontend.image .) }}
+
+Check it:
+  kubectl get pods,svc,ingress,hpa -n {{ .Release.Namespace }}
+{{- if and .Values.ingress.enabled .Values.ingress.host }}
+
+Open:  http://{{ .Values.ingress.host }}/
+API:   http://{{ .Values.ingress.host }}/docs
+{{- end }}
+
+Without an ingress controller:
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "shelfwise.frontendName" . }} 8080:80
+  open http://localhost:8080

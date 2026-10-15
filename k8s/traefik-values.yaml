@@ -1,0 +1,23 @@
+# helm install traefik traefik/traefik -n traefik --create-namespace -f k8s/traefik-values.yaml
+# (ingress-nginx was archived upstream in March 2026, so this project uses Traefik.)
+service:
+  type: NodePort
+ports:
+  web:
+    nodePort: 30080
+  websecure:
+    nodePort: 30443
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+  name: traefik
+providers:
+  kubernetesIngress:
+    enabled: true
+  kubernetesCRD:
+    enabled: false
+accessLog:
+  enabled: true
+resources:
+  requests: { cpu: 50m, memory: 64Mi }
+  limits: { cpu: 300m, memory: 192Mi }

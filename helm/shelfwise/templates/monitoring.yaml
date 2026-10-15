@@ -1,0 +1,32 @@
+{{- if .Values.monitoring.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "shelfwise.backendName" . }}
+  labels:
+    {{- include "shelfwise.labels" . | nindent 4 }}
+    {{- toYaml .Values.monitoring.serviceMonitor.labels | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "shelfwise.selectorLabels" (list . "backend") | nindent 6 }}
+  namespaceSelector:
+    matchNames: [{{ .Release.Namespace }}]
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: {{ .Values.monitoring.serviceMonitor.interval }}
+{{- end }}
+{{- if .Values.monitoring.grafanaDashboard.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "shelfwise.fullname" . }}-dashboard
+  labels:
+    {{- include "shelfwise.labels" . | nindent 4 }}
+    {{- toYaml .Values.monitoring.grafanaDashboard.labels | nindent 4 }}
+data:
+  shelfwise.json: |-
+    {{- .Files.Get "dashboards/shelfwise.json" | nindent 4 }}
+{{- end }}

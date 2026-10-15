@@ -1,0 +1,82 @@
+# Defaults for every environment. values-local.yaml / values-eks.yaml layer on top.
+
+imagePullSecrets: []
+
+backend:
+  image:
+    repository: ghcr.io/rashimalik02/shelfwise-backend
+    tag: ""            # CI sets this to the commit SHA; falls back to .Chart.AppVersion
+    pullPolicy: IfNotPresent
+  replicaCount: 2      # ignored while autoscaling.enabled=true (the HPA owns replicas)
+  environment: kubernetes
+  seedDemoData: true
+  resources:
+    requests: { cpu: 100m, memory: 160Mi }
+    limits: { cpu: 500m, memory: 384Mi }
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 6
+    targetCPUUtilizationPercentage: 60
+  podDisruptionBudget:
+    minAvailable: 1
+
+frontend:
+  image:
+    repository: ghcr.io/rashimalik02/shelfwise-frontend
+    tag: ""
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  resources:
+    requests: { cpu: 25m, memory: 32Mi }
+    limits: { cpu: 200m, memory: 96Mi }
+  podDisruptionBudget:
+    minAvailable: 1
+
+postgres:
+  # In-cluster Postgres is fine for a demo. In production on AWS you'd point
+  # externalDatabaseUrl at Amazon RDS and set enabled=false.
+  enabled: true
+  image: postgres:17-alpine
+  database: shelfwise
+  username: shelfwise
+  password: ""          # empty = random password generated once and kept across upgrades
+  storage: 1Gi
+  storageClassName: ""  # empty = cluster default (standard on kind, gp2/gp3 on EKS)
+  resources:
+    requests: { cpu: 50m, memory: 96Mi }
+    limits: { cpu: 500m, memory: 384Mi }
+  externalDatabaseUrl: ""
+
+ingress:
+  enabled: true
+  className: traefik
+  host: shelfwise.local
+  annotations: {}
+  tls:
+    enabled: false
+    secretName: shelfwise-tls
+
+monitoring:
+  serviceMonitor:
+    enabled: false
+    interval: 15s
+    # kube-prometheus-stack only picks up ServiceMonitors carrying its release label
+    labels:
+      release: monitoring
+  grafanaDashboard:
+    enabled: false
+    # Picked up by the Grafana sidecar shipped with kube-prometheus-stack
+    labels:
+      grafana_dashboard: "1"
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]

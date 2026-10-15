@@ -1,0 +1,13 @@
+# Local kind cluster (see scripts/kind-up.sh). Traefik is the ingress controller.
+# *.localtest.me resolves to 127.0.0.1, so no /etc/hosts edit is needed.
+ingress:
+  host: shelfwise.localtest.me
+
+backend:
+  environment: kind
+
+monitoring:
+  serviceMonitor:
+    enabled: true
+  grafanaDashboard:
+    enabled: true
