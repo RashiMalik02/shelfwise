@@ -1,0 +1,49 @@
+# Full local stack: `docker compose up --build`, then open http://localhost:3000
+name: shelfwise
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: shelfwise
+      POSTGRES_USER: shelfwise
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-shelfwise}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shelfwise -d shelfwise"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    image: shelfwise-backend:local
+    environment:
+      DATABASE_URL: postgresql+psycopg://shelfwise:${POSTGRES_PASSWORD:-shelfwise}@postgres:5432/shelfwise
+      ENVIRONMENT: docker-compose
+      SEED_DEMO_DATA: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        APP_BUILD: ${APP_BUILD:-local}
+    image: shelfwise-frontend:local
+    environment:
+      BACKEND_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-3000}:8080"
+
+volumes:
+  postgres-data:
