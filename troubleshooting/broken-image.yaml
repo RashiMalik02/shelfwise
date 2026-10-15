@@ -1,0 +1,29 @@
+# Lab 1: the image tag doesn't exist.  kubectl apply -f troubleshooting/broken-image.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shelfwise-broken-image
+  namespace: shelfwise
+  labels:
+    lab: broken-image
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      lab: broken-image
+  template:
+    metadata:
+      labels:
+        lab: broken-image
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: backend
+          image: ghcr.io/rashimalik02/shelfwise-backend:v9.9.9-does-not-exist
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]

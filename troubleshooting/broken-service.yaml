@@ -1,0 +1,16 @@
+# Lab 2: a Service whose selector matches no pods.  kubectl apply -f troubleshooting/broken-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: shelfwise-api-broken
+  namespace: shelfwise
+  labels:
+    lab: broken-service
+spec:
+  selector:
+    app.kubernetes.io/name: shelfwise
+    app.kubernetes.io/component: api   # the pods are labelled component=backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
