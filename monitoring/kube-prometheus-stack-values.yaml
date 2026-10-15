@@ -32,9 +32,10 @@ grafana:
       label: grafana_dashboard
       labelValue: "1"
       searchNamespace: ALL
+  # Grafana 13 sits around 450Mi once dashboards load; 320Mi got it OOMKilled.
   resources:
-    requests: { cpu: 50m, memory: 128Mi }
-    limits: { memory: 320Mi }
+    requests: { cpu: 50m, memory: 256Mi }
+    limits: { memory: 640Mi }
 
 kubeEtcd:
   enabled: false
