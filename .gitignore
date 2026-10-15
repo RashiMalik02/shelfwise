@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.db
+
+# Node / frontend
+node_modules/
+dist/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+kubeconfig*
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+terraform.tfvars
+!terraform.tfvars.example
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+*.log
