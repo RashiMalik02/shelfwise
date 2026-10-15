@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars (git-ignored) and adjust.
+# Credentials do NOT go here - use `aws configure` or AWS_PROFILE.
+
+aws_region   = "ap-south-1"
+environment  = "dev"
+owner        = "your-name"
+cluster_name = "shelfwise-eks"
+
+# Cheapest setup that still demonstrates everything:
+node_instance_types = ["t3.medium"]
+node_capacity_type  = "SPOT"
+node_desired_size   = 2
+single_nat_gateway  = true
+
+# Lock the Kubernetes API to your own IP (curl -s https://checkip.amazonaws.com):
+# cluster_endpoint_public_access_cidrs = ["203.0.113.10/32"]
