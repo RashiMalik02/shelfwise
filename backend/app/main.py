@@ -48,7 +48,12 @@ app.include_router(insights.router)
 
 @app.get("/", tags=["system"])
 def root():
-    return {"service": settings.app_name, "version": settings.app_version, "environment": settings.environment, "docs": "/docs"}
+    return {
+        "service": settings.app_name,
+        "version": settings.app_version,
+        "environment": settings.environment,
+        "docs": "/docs",
+    }
 
 
 @app.get("/health", tags=["system"])

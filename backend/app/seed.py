@@ -46,7 +46,11 @@ def seed() -> int:
             )
             db.add(product)
             if qty:
-                db.add(StockMovement(product=product, delta=qty, reason="RECEIVED", note="Opening stock", quantity_after=qty))
+                db.add(
+                    StockMovement(
+                        product=product, delta=qty, reason="RECEIVED", note="Opening stock", quantity_after=qty
+                    )
+                )
         db.commit()
         return len(DEMO_PRODUCTS)
 

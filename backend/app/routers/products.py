@@ -28,9 +28,7 @@ def movement_out(movement: StockMovement) -> MovementOut:
 
 
 def record_movement(db: Session, product: Product, delta: int, reason: str, note: str = "") -> StockMovement:
-    movement = StockMovement(
-        product=product, delta=delta, reason=reason, note=note, quantity_after=product.quantity
-    )
+    movement = StockMovement(product=product, delta=delta, reason=reason, note=note, quantity_after=product.quantity)
     db.add(movement)
     STOCK_MOVEMENTS.labels(reason=reason).inc()
     return movement
