@@ -1,0 +1,13 @@
+# Minimal Argo CD for a laptop: no SSO, no notifications, no ApplicationSets.
+dex:
+  enabled: false
+notifications:
+  enabled: false
+applicationSet:
+  enabled: false
+configs:
+  params:
+    server.insecure: true
+  cm:
+    # Poll Git every 60s instead of the default 180s so demos feel snappier.
+    timeout.reconciliation: 60s

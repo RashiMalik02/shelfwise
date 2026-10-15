@@ -1,0 +1,41 @@
+# Argo CD keeps the local cluster in sync with helm/shelfwise on the main branch.
+# The CI job "promote-gitops" rewrites values-release.yaml with the new image SHA,
+# Argo CD notices the commit and rolls the Deployments forward.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shelfwise
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RashiMalik02/shelfwise.git
+    targetRevision: main
+    path: helm/shelfwise
+    helm:
+      releaseName: shelfwise
+      valueFiles:
+        - values.yaml
+        - values-local.yaml
+        - values-release.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shelfwise
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+  ignoreDifferences:
+    # The chart generates the DB password once. Argo renders the chart without
+    # cluster access, so it would otherwise "fix" the secret with a new random value.
+    - kind: Secret
+      name: shelfwise-db
+      jsonPointers: ["/data"]
+    # Replica count belongs to the HPA, not to Git.
+    - group: apps
+      kind: Deployment
+      name: shelfwise-backend
+      jsonPointers: ["/spec/replicas"]
