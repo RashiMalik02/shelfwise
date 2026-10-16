@@ -1,0 +1,235 @@
+module.eks.module.kms.data.aws_partition.current[0]: Reading...
+data.aws_availability_zones.available: Reading...
+module.eks.module.eks_managed_node_group["general"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...
+module.eks.data.aws_caller_identity.current[0]: Reading...
+module.eks.data.aws_partition.current[0]: Reading...
+module.vpc.aws_vpc.this[0]: Refreshing state... [id=vpc-0a020eb21e856864d]
+module.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...
+module.eks.module.kms.data.aws_caller_identity.current[0]: Reading...
+module.eks.aws_cloudwatch_log_group.this[0]: Refreshing state... [id=/aws/eks/shelfwise-eks/cluster]
+module.eks.data.aws_partition.current[0]: Read complete after 0s [id=aws]
+module.eks.module.kms.data.aws_partition.current[0]: Read complete after 0s [id=aws]
+module.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2830595799]
+module.eks.module.eks_managed_node_group["general"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296]
+module.eks.aws_iam_role.this[0]: Refreshing state... [id=shelfwise-eks-cluster-a264e16a4d7b01de77462a4196]
+module.eks.module.eks_managed_node_group["general"].aws_iam_role.this[0]: Refreshing state... [id=general-eks-node-group-81a8f47f69b4269d004f793321]
+module.eks.module.kms.data.aws_caller_identity.current[0]: Read complete after 1s [id=811106941372]
+module.eks.data.aws_caller_identity.current[0]: Read complete after 1s [id=811106941372]
+module.eks.data.aws_iam_session_context.current[0]: Reading...
+module.eks.data.aws_iam_session_context.current[0]: Read complete after 0s [id=arn:aws:iam::811106941372:user/terraform-student]
+module.eks.module.eks_managed_node_group["general"].aws_iam_role_policy_attachment.this["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=general-eks-node-group-81a8f47f69b4269d004f793321/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+module.eks.module.eks_managed_node_group["general"].aws_iam_role_policy_attachment.this["AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=general-eks-node-group-81a8f47f69b4269d004f793321/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+module.eks.module.eks_managed_node_group["general"].aws_iam_role_policy_attachment.this["AmazonEKS_CNI_Policy"]: Refreshing state... [id=general-eks-node-group-81a8f47f69b4269d004f793321/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+module.eks.aws_iam_role_policy_attachment.this["AmazonEKSClusterPolicy"]: Refreshing state... [id=shelfwise-eks-cluster-a264e16a4d7b01de77462a4196/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+module.eks.module.kms.data.aws_iam_policy_document.this[0]: Reading...
+module.eks.module.kms.data.aws_iam_policy_document.this[0]: Read complete after 0s [id=2549391032]
+module.eks.module.kms.aws_kms_key.this[0]: Refreshing state... [id=e154d4c6-8cf7-422a-a84a-31f5028cc828]
+data.aws_availability_zones.available: Read complete after 6s [id=ap-southeast-2]
+module.vpc.aws_default_security_group.this[0]: Refreshing state... [id=sg-0323656dbca91a6b2]
+module.vpc.aws_default_route_table.default[0]: Refreshing state... [id=rtb-0930b596d92cab62e]
+module.vpc.aws_route_table.public[0]: Refreshing state... [id=rtb-03c8da67446405187]
+module.vpc.aws_internet_gateway.this[0]: Refreshing state... [id=igw-03453c1cdbe5fea5a]
+module.vpc.aws_default_network_acl.this[0]: Refreshing state... [id=acl-0087c9453b965d358]
+module.vpc.aws_subnet.private[0]: Refreshing state... [id=subnet-0b1a41e3d5e48ea53]
+module.vpc.aws_subnet.private[1]: Refreshing state... [id=subnet-0e5280c7761ad6aac]
+module.eks.aws_security_group.cluster[0]: Refreshing state... [id=sg-0cb8ec84d4878e759]
+module.vpc.aws_subnet.public[0]: Refreshing state... [id=subnet-08fba89a9d1423ed9]
+module.vpc.aws_subnet.public[1]: Refreshing state... [id=subnet-05522fd9279421d6c]
+module.vpc.aws_route_table.private[0]: Refreshing state... [id=rtb-0659e11c7759ad440]
+module.eks.aws_security_group.node[0]: Refreshing state... [id=sg-03487e504164a24e1]
+module.vpc.aws_eip.nat[0]: Refreshing state... [id=eipalloc-092211adfceb16aae]
+module.vpc.aws_route.public_internet_gateway[0]: Refreshing state... [id=r-rtb-03c8da674464051871080289494]
+module.eks.aws_security_group_rule.node["ingress_cluster_443"]: Refreshing state... [id=sgrule-3626026120]
+module.eks.aws_security_group_rule.node["ingress_cluster_kubelet"]: Refreshing state... [id=sgrule-3383114372]
+module.eks.aws_security_group_rule.node["ingress_cluster_10251_webhook"]: Refreshing state... [id=sgrule-4260326143]
+module.eks.aws_security_group_rule.node["ingress_nodes_ephemeral"]: Refreshing state... [id=sgrule-789141879]
+module.eks.aws_security_group_rule.node["ingress_cluster_6443_webhook"]: Refreshing state... [id=sgrule-140268585]
+module.eks.aws_security_group_rule.node["ingress_cluster_4443_webhook"]: Refreshing state... [id=sgrule-3239982015]
+module.eks.aws_security_group_rule.node["ingress_cluster_9443_webhook"]: Refreshing state... [id=sgrule-2141281219]
+module.eks.aws_security_group_rule.node["ingress_self_coredns_udp"]: Refreshing state... [id=sgrule-1390149890]
+module.eks.aws_security_group_rule.node["ingress_cluster_8443_webhook"]: Refreshing state... [id=sgrule-453011464]
+module.eks.aws_security_group_rule.node["egress_all"]: Refreshing state... [id=sgrule-1343392267]
+module.eks.aws_security_group_rule.node["ingress_self_coredns_tcp"]: Refreshing state... [id=sgrule-4135822061]
+module.eks.aws_security_group_rule.cluster["ingress_nodes_443"]: Refreshing state... [id=sgrule-3640928941]
+module.vpc.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-01ae9f018aff26963]
+module.vpc.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-01611ac2f1b242f19]
+module.vpc.aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-03324c6923ef6c123]
+module.vpc.aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-0d822e5825d10ff91]
+module.vpc.aws_nat_gateway.this[0]: Refreshing state... [id=nat-06c4b411c13cd2d53]
+module.vpc.aws_route.private_nat_gateway[0]: Refreshing state... [id=r-rtb-0659e11c7759ad4401080289494]
+module.eks.module.kms.aws_kms_alias.this["cluster"]: Refreshing state... [id=alias/eks/shelfwise-eks]
+module.eks.aws_iam_policy.cluster_encryption[0]: Refreshing state... [id=arn:aws:iam::811106941372:policy/shelfwise-eks-cluster-ClusterEncryption8ccb12476a415e3aef8877d117]
+module.eks.aws_eks_cluster.this[0]: Refreshing state... [id=shelfwise-eks]
+module.eks.aws_iam_role_policy_attachment.cluster_encryption[0]: Refreshing state... [id=shelfwise-eks-cluster-a264e16a4d7b01de77462a4196/arn:aws:iam::811106941372:policy/shelfwise-eks-cluster-ClusterEncryption8ccb12476a415e3aef8877d117]
+module.eks.aws_eks_access_entry.this["cluster_creator"]: Refreshing state... [id=shelfwise-eks:arn:aws:iam::811106941372:user/terraform-student]
+module.eks.time_sleep.this[0]: Refreshing state... [id=2026-10-16T15:57:27Z]
+module.eks.data.aws_eks_addon_version.this["kube-proxy"]: Reading...
+module.eks.data.aws_eks_addon_version.this["coredns"]: Reading...
+module.eks.data.aws_eks_addon_version.this["metrics-server"]: Reading...
+module.eks.data.aws_eks_addon_version.this["vpc-cni"]: Reading...
+module.eks.data.aws_eks_addon_version.this["eks-pod-identity-agent"]: Reading...
+module.eks.module.eks_managed_node_group["general"].module.user_data.null_resource.validate_cluster_service_cidr: Refreshing state... [id=8402493596897389161]
+module.eks.module.eks_managed_node_group["general"].data.aws_ssm_parameter.ami[0]: Reading...
+module.eks.module.eks_managed_node_group["general"].aws_launch_template.this[0]: Refreshing state... [id=lt-0e20c3d837836762d]
+module.eks.data.aws_eks_addon_version.this["eks-pod-identity-agent"]: Read complete after 0s [id=eks-pod-identity-agent]
+module.eks.data.aws_eks_addon_version.this["vpc-cni"]: Read complete after 0s [id=vpc-cni]
+module.eks.data.aws_eks_addon_version.this["kube-proxy"]: Read complete after 1s [id=kube-proxy]
+module.eks.data.aws_eks_addon_version.this["coredns"]: Read complete after 1s [id=coredns]
+module.eks.data.aws_eks_addon_version.this["metrics-server"]: Read complete after 1s [id=metrics-server]
+module.eks.aws_eks_addon.before_compute["vpc-cni"]: Refreshing state... [id=shelfwise-eks:vpc-cni]
+module.eks.aws_eks_addon.before_compute["eks-pod-identity-agent"]: Refreshing state... [id=shelfwise-eks:eks-pod-identity-agent]
+module.eks.aws_eks_access_policy_association.this["cluster_creator_admin"]: Refreshing state... [id=shelfwise-eks#arn:aws:iam::811106941372:user/terraform-student#arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy]
+module.eks.module.eks_managed_node_group["general"].data.aws_ssm_parameter.ami[0]: Read complete after 10s [id=/aws/service/eks/optimized-ami/1.34/amazon-linux-2023/x86_64/standard/recommended/release_version]
+module.eks.module.eks_managed_node_group["general"].aws_eks_node_group.this[0]: Refreshing state... [id=shelfwise-eks:general-3ec51d212f0350e60dcc8a4d3a]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply" which may have affected this plan:
+
+  # module.eks.module.eks_managed_node_group["general"].aws_eks_node_group.this[0] has changed
+  ~ resource "aws_eks_node_group" "this" {
+      + arn                    = "arn:aws:eks:ap-southeast-2:811106941372:nodegroup/shelfwise-eks/general-3ec51d212f0350e60dcc8a4d3a/d6d0a2b7-7269-a900-bad8-7c36041f6799"
+        id                     = "shelfwise-eks:general-3ec51d212f0350e60dcc8a4d3a"
+      + resources              = []
+      + status                 = "CREATING"
+        tags                   = {
+            "Name" = "general"
+        }
+        # (12 unchanged attributes hidden)
+
+        # (3 unchanged blocks hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
++/- create replacement and then destroy
+
+Terraform will perform the following actions:
+
+  # module.eks.aws_eks_addon.this["coredns"] will be created
+  + resource "aws_eks_addon" "this" {
+      + addon_name                  = "coredns"
+      + addon_version               = "v1.13.2-eksbuild.51"
+      + arn                         = (known after apply)
+      + cluster_name                = "shelfwise-eks"
+      + configuration_values        = (known after apply)
+      + created_at                  = (known after apply)
+      + id                          = (known after apply)
+      + modified_at                 = (known after apply)
+      + preserve                    = true
+      + region                      = "ap-southeast-2"
+      + resolve_conflicts_on_create = "NONE"
+      + resolve_conflicts_on_update = "OVERWRITE"
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "rashimalik02"
+          + "Project"     = "shelfwise"
+        }
+
+      + namespace_config (known after apply)
+
+      + timeouts {}
+    }
+
+  # module.eks.aws_eks_addon.this["kube-proxy"] will be created
+  + resource "aws_eks_addon" "this" {
+      + addon_name                  = "kube-proxy"
+      + addon_version               = "v1.34.6-eksbuild.49"
+      + arn                         = (known after apply)
+      + cluster_name                = "shelfwise-eks"
+      + configuration_values        = (known after apply)
+      + created_at                  = (known after apply)
+      + id                          = (known after apply)
+      + modified_at                 = (known after apply)
+      + preserve                    = true
+      + region                      = "ap-southeast-2"
+      + resolve_conflicts_on_create = "NONE"
+      + resolve_conflicts_on_update = "OVERWRITE"
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "rashimalik02"
+          + "Project"     = "shelfwise"
+        }
+
+      + namespace_config (known after apply)
+
+      + timeouts {}
+    }
+
+  # module.eks.aws_eks_addon.this["metrics-server"] will be created
+  + resource "aws_eks_addon" "this" {
+      + addon_name                  = "metrics-server"
+      + addon_version               = "v0.9.0-eksbuild.13"
+      + arn                         = (known after apply)
+      + cluster_name                = "shelfwise-eks"
+      + configuration_values        = (known after apply)
+      + created_at                  = (known after apply)
+      + id                          = (known after apply)
+      + modified_at                 = (known after apply)
+      + preserve                    = true
+      + region                      = "ap-southeast-2"
+      + resolve_conflicts_on_create = "NONE"
+      + resolve_conflicts_on_update = "OVERWRITE"
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "rashimalik02"
+          + "Project"     = "shelfwise"
+        }
+
+      + namespace_config (known after apply)
+
+      + timeouts {}
+    }
+
+  # module.eks.module.eks_managed_node_group["general"].aws_eks_node_group.this[0] is tainted, so must be replaced
++/- resource "aws_eks_node_group" "this" {
+      ~ arn                    = "arn:aws:eks:ap-southeast-2:811106941372:nodegroup/shelfwise-eks/general-3ec51d212f0350e60dcc8a4d3a/d6d0a2b7-7269-a900-bad8-7c36041f6799" -> (known after apply)
+      ~ disk_size              = 0 -> (known after apply)
+      ~ id                     = "shelfwise-eks:general-3ec51d212f0350e60dcc8a4d3a" -> (known after apply)
+      ~ instance_types         = [
+          ~ "t3.medium" -> "c7i-flex.large",
+        ]
+      ~ node_group_name        = "general-3ec51d212f0350e60dcc8a4d3a" -> (known after apply)
+      ~ resources              = [] -> (known after apply)
+      ~ status                 = "CREATING" -> (known after apply)
+        tags                   = {
+            "Name" = "general"
+        }
+        # (11 unchanged attributes hidden)
+
+      ~ launch_template {
+            id      = "lt-0e20c3d837836762d"
+          ~ name    = "general-4bff54c903b47d479938fc5a52" -> (known after apply)
+            # (1 unchanged attribute hidden)
+        }
+
+      ~ node_repair_config (known after apply)
+
+      ~ update_config {
+          - max_unavailable            = 0 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+        # (1 unchanged block hidden)
+    }
+
+Plan: 4 to add, 0 to change, 1 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan2
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan2"
