@@ -1,0 +1,21 @@
+availability_zones = tolist([
+  "ap-southeast-2a",
+  "ap-southeast-2b",
+])
+cluster_endpoint = "https://D76C5B21430F4632206DDC374C3345FD.gr7.ap-southeast-2.eks.amazonaws.com"
+cluster_name = "shelfwise-eks"
+cluster_version = "1.34"
+configure_kubectl = "aws eks update-kubeconfig --region ap-southeast-2 --name shelfwise-eks"
+node_group_names = [
+  "general",
+]
+private_subnet_ids = [
+  "subnet-0b1a41e3d5e48ea53",
+  "subnet-0e5280c7761ad6aac",
+]
+public_subnet_ids = [
+  "subnet-08fba89a9d1423ed9",
+  "subnet-05522fd9279421d6c",
+]
+region = "ap-southeast-2"
+vpc_id = "vpc-0a020eb21e856864d"

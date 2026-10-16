@@ -70,9 +70,9 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | VPC with ≥ 2 public subnets | `module "vpc"` in [`main.tf`](../terraform/main.tf); asserted in [`tests/infrastructure.tftest.hcl`](../terraform/tests/infrastructure.tftest.hcl) |
 | EKS with a node group | `module "eks"` → `eks_managed_node_groups.general` |
 | `terraform.tfvars.example`, no secrets | [`terraform.tfvars.example`](../terraform/terraform.tfvars.example); `terraform.tfvars` and state are git-ignored |
-| **Still to do (needs an AWS account that may create EC2/VPC/EKS)** | `terraform plan` screenshot · AWS Console VPC + EKS screenshot (ap-south-1) · `terraform destroy` screenshot |
+| Real AWS run (ap-southeast-2) | [m7-terraform-plan.png](screenshots/m7-terraform-plan.png) (57 to add) · [m7-terraform-apply-output.png](screenshots/m7-terraform-apply-output.png) · console: [VPC](screenshots/m7-console-vpc.png), [EKS cluster](screenshots/m7-console-eks-cluster.png), [node group](screenshots/m7-console-eks-compute.png) · CLI: [VPC + 2 public/2 private subnets](screenshots/m7-aws-vpc-subnets.png), [EKS + nodes Ready](screenshots/m7-aws-eks-cluster-nodes.png) · destroy log: `docs/aws/terraform-destroy.txt` |
 
-> **AWS status (16 Oct 2026):** the AWS account `496159213908` is a member of an AWS Organization whose service control policies deny `ec2:*Vpc*`, `ec2:DescribeAvailabilityZones`, `eks:*` and `ssm:GetParameter` in every region. That even blocks `terraform plan`. No resources were created and no credits were used. Once the organization's administrator lifts those SCPs, or the account leaves the organization, run [`scripts/aws-capstone.sh`](../scripts/aws-capstone.sh).
+> **AWS notes:** new-sign-up Free-plan accounts are locked to one region (India -> `ap-southeast-2`), may only launch Free Tier instance types (nodes use `c7i-flex.large`) and are denied `iam:CreateOpenIDConnectProvider` (IRSA off; Pod Identity used). Total cost of the run: under $1.
 
 ## M8 · Kubernetes + Helm (15)
 
