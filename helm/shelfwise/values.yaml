@@ -41,6 +41,10 @@ postgres:
   database: shelfwise
   username: shelfwise
   password: ""          # empty = random password generated once and kept across upgrades
+  # Name of a Secret you manage yourself (keys POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD,
+  # DATABASE_URL). Required for GitOps: Argo CD renders the chart offline, so a chart-generated
+  # random password would change on every sync. scripts/argocd-up.sh creates it.
+  existingSecret: ""
   storage: 1Gi
   storageClassName: ""  # empty = cluster default (standard on kind, gp2/gp3 on EKS)
   resources:

@@ -32,7 +32,7 @@ app.kubernetes.io/component: {{ index . 1 }}
 {{- define "shelfwise.backendName" -}}{{ include "shelfwise.fullname" . }}-backend{{- end -}}
 {{- define "shelfwise.frontendName" -}}{{ include "shelfwise.fullname" . }}-frontend{{- end -}}
 {{- define "shelfwise.postgresName" -}}{{ include "shelfwise.fullname" . }}-postgres{{- end -}}
-{{- define "shelfwise.secretName" -}}{{ include "shelfwise.fullname" . }}-db{{- end -}}
+{{- define "shelfwise.secretName" -}}{{ .Values.postgres.existingSecret | default (printf "%s-db" (include "shelfwise.fullname" .)) }}{{- end -}}
 
 {{/*
 Postgres password: an explicit value wins; otherwise reuse the one already in the

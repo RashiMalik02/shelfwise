@@ -18,6 +18,10 @@ spec:
         - values.yaml
         - values-local.yaml
         - values-release.yaml
+      parameters:
+        # Created once by scripts/argocd-up.sh, never rendered by the chart.
+        - name: postgres.existingSecret
+          value: shelfwise-db
   destination:
     server: https://kubernetes.default.svc
     namespace: shelfwise
@@ -29,11 +33,6 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
-    # The chart generates the DB password once. Argo renders the chart without
-    # cluster access, so it would otherwise "fix" the secret with a new random value.
-    - kind: Secret
-      name: shelfwise-db
-      jsonPointers: ["/data"]
     # Replica count belongs to the HPA, not to Git.
     - group: apps
       kind: Deployment

@@ -18,6 +18,20 @@ if helm status shelfwise -n shelfwise >/dev/null 2>&1; then
   helm uninstall shelfwise -n shelfwise
 fi
 
+# The DB credentials live outside Git and outside the chart. Create them once;
+# if a previous install left a secret behind, keep it (Postgres already uses that password).
+kubectl apply -f k8s/namespace.yaml >/dev/null
+if ! kubectl -n shelfwise get secret shelfwise-db >/dev/null 2>&1; then
+  pw="$(openssl rand -hex 16)"
+  kubectl -n shelfwise create secret generic shelfwise-db \
+    --from-literal=POSTGRES_DB=shelfwise \
+    --from-literal=POSTGRES_USER=shelfwise \
+    --from-literal=POSTGRES_PASSWORD="$pw" \
+    --from-literal=DATABASE_URL="postgresql+psycopg://shelfwise:${pw}@shelfwise-postgres:5432/shelfwise"
+fi
+# Make sure Argo CD never treats the secret as its own (it would prune it).
+kubectl -n shelfwise annotate secret shelfwise-db argocd.argoproj.io/tracking-id- >/dev/null 2>&1 || true
+
 kubectl apply -f gitops/argocd-application.yaml
 
 echo
