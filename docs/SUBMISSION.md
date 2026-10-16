@@ -25,8 +25,8 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 
 | Criterion | Evidence |
 |---|---|
-| Public repo URL | **Still to do:** push, then paste the URL in the form |
-| Meaningful commit messages, ≥ 10 commits | `git log --oneline` (14+ commits). **Still to do:** commit-history screenshot from GitHub |
+| Public repo URL | <https://github.com/RashiMalik02/shelfwise> |
+| Meaningful commit messages, ≥ 10 commits | [m3-commit-history.png](screenshots/m3-commit-history.png) |
 | `.gitignore` covers `.env`, `__pycache__`, `node_modules`, `.venv` | [`.gitignore`](../.gitignore) |
 
 ## M4 · Docker (10)
@@ -49,7 +49,8 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | Images built for both | `images` job, matrix `[backend, frontend]` |
 | Pushed to GHCR | `docker push ghcr.io/<owner>/shelfwise-<service>:<sha>` |
 | SHA tags, not `latest` | tag is `${{ github.sha }}`; `latest` is never pushed |
-| **Still to do** | Actions run URL (green) and a GHCR package page screenshot showing the SHA tags |
+| Green run | <https://github.com/RashiMalik02/shelfwise/actions/runs/38824356101> · [m5-actions-run-green.png](screenshots/m5-actions-run-green.png) |
+| GHCR with SHA tags | [m5-ghcr-backend-sha-tag.png](screenshots/m5-ghcr-backend-sha-tag.png) · [m5-ghcr-frontend-sha-tag.png](screenshots/m5-ghcr-frontend-sha-tag.png) (GitHub's "Latest" badge marks the newest version; no `latest` tag exists) |
 
 ## M6 · Trivy (5)
 
@@ -58,7 +59,7 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | Scan on both images in CI | "Trivy scan" step in the `images` matrix job |
 | Fails on HIGH/CRITICAL | `severity: HIGH,CRITICAL`, `exit-code: "1"` |
 | Explain a CVE / clean result | [`docs/TRIVY.md`](TRIVY.md) · [m6-trivy-before-fix.png](screenshots/m6-trivy-before-fix.png) (4 HIGH, exit 1) · [m6-trivy-clean-local.png](screenshots/m6-trivy-clean-local.png) (clean, exit 0) |
-| **Still to do** | Screenshot of the same step in a GitHub Actions run |
+| Trivy in a real pipeline run | [m6-trivy-ci-step.png](screenshots/m6-trivy-ci-step.png) (step log from run 38824356101, both images clean) |
 
 ## M7 · Terraform (15)
 
