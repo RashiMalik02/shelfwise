@@ -14,8 +14,15 @@ ingressClass:
 providers:
   kubernetesIngress:
     enabled: true
+    # A NodePort Service has no load-balancer address to copy; use the fixed IP below instead.
+    publishedService:
+      enabled: false
   kubernetesCRD:
     enabled: false
+# kind maps the NodePorts to 127.0.0.1; publishing that address on Ingress status
+# lets `kubectl get ingress` show it and lets Argo CD mark the Ingress Healthy.
+additionalArguments:
+  - --providers.kubernetesingress.ingressendpoint.ip=127.0.0.1
 accessLog:
   enabled: true
 resources:
