@@ -1,14 +1,15 @@
 # Copy to terraform.tfvars (git-ignored) and adjust.
 # Credentials do NOT go here - use `aws configure` or AWS_PROFILE.
 
-aws_region   = "ap-south-1"
+# New-sign-up AWS accounts are locked to one region (India -> ap-southeast-2).
+aws_region   = "ap-southeast-2"
 environment  = "dev"
 owner        = "your-name"
 cluster_name = "shelfwise-eks"
 
 # Cheapest setup that still demonstrates everything:
-node_instance_types = ["t3.medium"]
-node_capacity_type  = "SPOT"
+node_instance_types = ["c7i-flex.large"]   # Free Tier eligible; t3.medium is not
+node_capacity_type  = "ON_DEMAND"   # SPOT is ~65% cheaper where your account allows it
 node_desired_size   = 2
 single_nat_gateway  = true
 

@@ -63,9 +63,15 @@ variable "single_nat_gateway" {
 }
 
 variable "node_instance_types" {
-  description = "EC2 instance types for the managed node group."
+  description = "EC2 instance types for the managed node group. Free-plan accounts may only launch Free Tier eligible types (c7i-flex.large, m7i-flex.large, t3.small, ...)."
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["c7i-flex.large"]
+}
+
+variable "enable_irsa" {
+  description = "Create the IAM OIDC provider for IAM Roles for Service Accounts. Off by default: pods use EKS Pod Identity instead, and Free-plan accounts are denied iam:CreateOpenIDConnectProvider."
+  type        = bool
+  default     = false
 }
 
 variable "node_capacity_type" {

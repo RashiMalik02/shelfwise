@@ -69,6 +69,9 @@ module "eks" {
   # Whoever runs `terraform apply` gets cluster-admin, so kubectl works straight away.
   enable_cluster_creator_admin_permissions = true
 
+  # Pod Identity (the eks-pod-identity-agent add-on below) replaces IRSA's OIDC provider.
+  enable_irsa = var.enable_irsa
+
   addons = {
     coredns    = {}
     kube-proxy = {}

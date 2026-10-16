@@ -8,12 +8,15 @@ set -euo pipefail
 cd "$(dirname "$0")/../terraform"
 
 export AWS_PROFILE="${AWS_PROFILE:-shelfwise}"
-REGION="${AWS_REGION:-ap-south-1}"
+# Accounts made with AWS's new sign-up flow are locked to ONE region picked from the
+# contact-address country (India -> ap-southeast-2, Sydney); every other region is denied by
+# an AWS-managed SCP. Check yours at https://settings.aws.com -> Project -> Additional info.
+REGION="${AWS_REGION:-ap-southeast-2}"
 OUT=../docs/aws
 mkdir -p "$OUT"
 
-# SPOT nodes cost roughly a third of on-demand; one NAT gateway instead of two.
-TF_VARS=(-var "aws_region=$REGION" -var "node_capacity_type=SPOT" -var "node_desired_size=2" -var "single_nat_gateway=true")
+# Free-plan accounts may not request Spot capacity, so nodes are on-demand; one NAT gateway instead of two.
+TF_VARS=(-var "aws_region=$REGION" -var "node_capacity_type=${CAPACITY:-ON_DEMAND}" -var "node_desired_size=2" -var "single_nat_gateway=true")
 
 echo "==> preflight"
 aws sts get-caller-identity --query Arn --output text
@@ -31,7 +34,7 @@ echo "==> terraform init + plan"
 terraform init -input=false
 terraform plan -input=false "${TF_VARS[@]}" -out tfplan | tee "$OUT/terraform-plan.txt"
 
-read -r -p "Apply this plan? EKS + NAT + 2 spot nodes cost about \$0.20/hour until destroyed. [y/N] " ok
+read -r -p "Apply this plan? EKS + NAT + 2 t3.medium nodes cost about \$0.27/hour until destroyed. [y/N] " ok
 [ "$ok" = "y" ] || { echo "Not applied."; exit 0; }
 
 START=$(date +%s)
