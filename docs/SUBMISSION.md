@@ -70,7 +70,9 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | VPC with ≥ 2 public subnets | `module "vpc"` in [`main.tf`](../terraform/main.tf); asserted in [`tests/infrastructure.tftest.hcl`](../terraform/tests/infrastructure.tftest.hcl) |
 | EKS with a node group | `module "eks"` → `eks_managed_node_groups.general` |
 | `terraform.tfvars.example`, no secrets | [`terraform.tfvars.example`](../terraform/terraform.tfvars.example); `terraform.tfvars` and state are git-ignored |
-| **Still to do (needs an AWS account)** | `terraform plan` screenshot · AWS Console VPC + EKS screenshot (ap-south-1) · `terraform destroy` screenshot |
+| **Still to do (needs an AWS account that may create EC2/VPC/EKS)** | `terraform plan` screenshot · AWS Console VPC + EKS screenshot (ap-south-1) · `terraform destroy` screenshot |
+
+> **AWS status (16 Oct 2026):** the AWS account `496159213908` is a member of an AWS Organization whose service control policies deny `ec2:*Vpc*`, `ec2:DescribeAvailabilityZones`, `eks:*` and `ssm:GetParameter` in every region. That even blocks `terraform plan`. No resources were created and no credits were used. Once the organization's administrator lifts those SCPs, or the account leaves the organization, run [`scripts/aws-capstone.sh`](../scripts/aws-capstone.sh).
 
 ## M8 · Kubernetes + Helm (15)
 
@@ -100,7 +102,7 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | Criterion | Evidence |
 |---|---|
 | README explaining the app | [`README.md`](../README.md) |
-| Live demo: commit → pipeline → deployment updates | Run-sheet in [`docs/DEMO.md`](DEMO.md) |
+| Live demo: commit → pipeline → deployment updates | Run-sheet in [`docs/DEMO.md`](DEMO.md). Rehearsed end to end: push `bd4fffe` → [run 38913787029](https://github.com/RashiMalik02/shelfwise/actions/runs/38913787029) green → bot commit `b73ec3b` → Argo CD synced: [m10-argocd-synced-healthy.png](screenshots/m10-argocd-synced-healthy.png) · header shows the new build: [m10-app-new-build-sha.png](screenshots/m10-app-new-build-sha.png) · pods rolling to the new tag: [m10-rollout.png](screenshots/m10-rollout.png) |
 
 ## Before you submit
 
