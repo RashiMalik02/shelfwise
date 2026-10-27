@@ -62,7 +62,7 @@ export default function Overview({ stats }) {
         <div className="overview__inner">
           <div className="overview__hero">
             <p className="eyebrow">{today}</p>
-            <h1 className="overview__title">Stockroom at a glance</h1>
+            <h1 className="overview__title">Stockroom today</h1>
             <p className="overview__label">Value on the shelves</p>
             <p className="hero-figure">{stats ? money(stats.inventory_value) : '—'}</p>
           </div>
