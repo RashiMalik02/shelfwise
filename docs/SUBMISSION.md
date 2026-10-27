@@ -102,6 +102,7 @@ Every rubric line with the file or screenshot that proves it. **Still to do** ma
 | Criterion | Evidence |
 |---|---|
 | README explaining the app | [`README.md`](../README.md) |
+| Demo video and presentation | [`demo/`](../demo/README.md): [video](https://drive.google.com/file/d/1ikTgMbRAWIpbeUvTFs1hs_lZa0Ft_hXV/view?usp=sharing) · [slides (.pptx)](../demo/shelfwise-presentation.pptx) · [slides (PDF)](../demo/shelfwise-presentation.pdf) |
 | Live demo: commit → pipeline → deployment updates | Run-sheet in [`docs/DEMO.md`](DEMO.md). Rehearsed end to end: push `bd4fffe` → [run 38913787029](https://github.com/RashiMalik02/shelfwise/actions/runs/38913787029) green → bot commit `b73ec3b` → Argo CD synced: [m10-argocd-synced-healthy.png](screenshots/m10-argocd-synced-healthy.png) · header shows the new build: [m10-app-new-build-sha.png](screenshots/m10-app-new-build-sha.png) · pods rolling to the new tag: [m10-rollout.png](screenshots/m10-rollout.png) |
 
 ## Before you submit

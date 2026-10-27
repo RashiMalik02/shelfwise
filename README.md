@@ -157,6 +157,7 @@ gitops/             Argo CD Application + install values
 scripts/            kind-up, deploy-local, argocd-up, load-test
 troubleshooting/    break-and-fix labs
 docs/               submission checklist, Trivy notes, demo script, screenshots
+demo/               demo video link and presentation slides
 ```
 
-Submission checklist with every screenshot: [`docs/SUBMISSION.md`](docs/SUBMISSION.md) · Presentation run-sheet: [`docs/DEMO.md`](docs/DEMO.md)
+Submission checklist with every screenshot: [`docs/SUBMISSION.md`](docs/SUBMISSION.md) · Presentation run-sheet: [`docs/DEMO.md`](docs/DEMO.md) · Demo video and slides: [`demo/`](demo/README.md)
