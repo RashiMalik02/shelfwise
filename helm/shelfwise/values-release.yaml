@@ -3,8 +3,8 @@
 backend:
   image:
     repository: ghcr.io/rashimalik02/shelfwise-backend
-    tag: "f323bed829d20bbc7aa3104f9cfb6d3728245f9e"
+    tag: "d50f46a16f43af1b0bf2544b082cf834a18af723"
 frontend:
   image:
     repository: ghcr.io/rashimalik02/shelfwise-frontend
-    tag: "f323bed829d20bbc7aa3104f9cfb6d3728245f9e"
+    tag: "d50f46a16f43af1b0bf2544b082cf834a18af723"
