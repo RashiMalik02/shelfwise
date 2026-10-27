@@ -1,4 +1,4 @@
-.PHONY: test lint up down kind deploy load tf-check
+.PHONY: test lint up down kind deploy load tf-check pf pf-stop
 
 test:            ## backend + frontend tests
 	cd backend && .venv/bin/pytest -v
@@ -19,6 +19,12 @@ kind:            ## local cluster with ingress + monitoring
 
 deploy:          ## build, load into kind, helm upgrade
 	./scripts/deploy-local.sh
+
+pf:              ## self-healing port-forwards: argocd 8081, grafana 3001, prometheus 9090
+	nohup ./scripts/port-forwards.sh > /tmp/shelfwise-pf.log 2>&1 &
+
+pf-stop:
+	pkill -f scripts/port-forwards.sh || true
 
 load:            ## drive the HPA
 	./scripts/load-test.sh 180
